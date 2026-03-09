@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="js/index.js"></script>
         <title>Trabalho 1</title>
+        
     </head>
     <body>
         <header id="cabecalho">  
@@ -14,19 +16,5 @@
         </footer>
 
         
-    
-    <script>
-        fetch('snippets/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-
-        fetch('snippets/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('rodape').innerHTML = data;
-            });
-    </script>
     </body>
-</html>
+</html

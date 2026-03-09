@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/log.css">
-
+    <script src="js/log.js"></script>
 </head>
 
 <body>
@@ -29,10 +29,6 @@
                     Administre seus jogos com um clique
                 </h1>
 
-                <button class="btn btn-outline btn-lg">
-                    Entre agora!
-                </button>
-
             </div>
 
             <!-- DIREITA: bolas + card empilhados -->
@@ -51,18 +47,25 @@
                             Que bom que está de volta.!
                         </p>
 
-                        <input class="input mb-md" type="text" placeholder="Usuário">
 
-                        <input class="input mb-md" type="password" placeholder="Senha">
 
-                        <div class="flex align-center gap-sm mb-md">
-                            <input type="checkbox">
-                            <span class="text-sm text-light">Lembre-me</span>
-                        </div>
 
-                        <button class="btn btn-primary w-full mb-sm">
-                            Login
-                        </button>
+
+                        <form>
+                            <input id = "usuario" class="input mb-md" type="text" name="usuario" placeholder="Usuário">
+                            <input id = "senha" class="input mb-md" type="password" name="senha" placeholder="Senha">
+                            <div class="flex align-center gap-sm mb-md">
+                                <input type="checkbox">
+                                <span class="text-sm text-light">Lembre-me</span>
+                            </div>
+                             <input type="submit" id = "login" class="btn btn-primary w-full mb-sm">
+                        </form>
+
+
+
+
+
+                        
 
                         <p class="text-center text-sm text-light mb-md">
                             Esqueceu a senha?
@@ -89,6 +92,7 @@
                             <a href="#">Sobre</a>
                         </div>
 
+                        
                     </div>
                 </div>
 
