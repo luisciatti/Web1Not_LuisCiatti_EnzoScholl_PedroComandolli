@@ -1,19 +1,28 @@
-const formulario = document.querySelector("form");
-const usuario = document.getElementsByName("usuario").text;
-const senha = document.getElementsByName("senha").text;
-const botaoLogin = document.getElementById("login");
-
-function validarCampo(){
-  if(usuario=="admin"&&senha=="admin"){
-    window.open("index.html", "_self");
-  };
-}
-
-botaoLogin.addEventListener("click", () => {
-    validarCampo();
-});
-
-formulario.addEventListener("submit", (e) => {
+const usuario = document.getElementById("usuario");
+const senha = document.getElementById("senha");
+const login = document.getElementById("login");
+const lembre = document.getElementById("lembre");
+ 
+const validarCampo = (e) => {
     e.preventDefault();
-})
+ 
+    if (usuario.value === "admin" && senha.value === "admin"){
+        window.open("index.html", "_self");
 
+    if (lembre.checked){
+       localStorage.setItem("usuario", "admin");
+       localStorage.setItem("senha", "admin");
+    }
+}
+};
+ //DOMContentLoaded = sempre que carregar a página executa;
+ document.addEventListener("DOMContentLoaded", () =>{
+    if(localStorage.getItem("usuario") && localStorage.getItem("senha")){
+        usuario.value=localStorage.getItem("usuario");
+        senha.value=localStorage.getItem("senha");
+    }
+ });
+
+login.addEventListener("click", (e) =>{
+    validarCampo(e)
+}) ;

@@ -53,6 +53,7 @@
 .gradient-ball {
     position: absolute;
     pointer-events: none;
+    filter: blur(40px);
     z-index: 0;             /* atrás do card */
 }
 
