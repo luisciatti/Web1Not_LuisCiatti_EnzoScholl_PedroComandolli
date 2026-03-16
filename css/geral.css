@@ -5,11 +5,11 @@
 :root {
 
     /* Cores principais */
-    --color-bg: #0b0f14;
+    --color-bg: #1D232C;
     --color-card: #11161c;
     --color-border: #323232;
 
-    --color-primary: #0fd850;
+    --color-primary: #809dc5;
     --color-primary-dark: #0a8f35;
 
     --color-secondary: #1f2937;
@@ -18,7 +18,7 @@
     --color-text-light: #9ca3af;
 
     /* Gradiente botão */
-    --gradient-primary: linear-gradient(90deg,#0000,#0a8f35);
+    --gradient-primary: linear-gradient(90deg,#0000,#3B4758);
 
     /* Bordas */
     --radius-sm: 6px;
