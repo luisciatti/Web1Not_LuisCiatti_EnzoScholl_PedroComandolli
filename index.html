@@ -1,20 +1,156 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <script src="js/index.js"></script>
-        <title>Trabalho 1</title>
-        
-    </head>
-    <body>
-        <header id="cabecalho">  
-        </header>
-        <nav>
-        </nav>
-        <article>
-        </article>
-        <footer id="rodape">
-        </footer>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTRLPLAY - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-user-circle"></i>
+                    <span>CTRLPLAY</span>
+                </div>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search here...">
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="toggle-buttons">
+                    <button class="toggle-btn"><i class="fas fa-toggle-on"></i></button>
+                    <button class="toggle-btn"><i class="fas fa-moon"></i></button>
+                </div>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/40" alt="User">
+                </div>
+            </div>
+        </div>
+    </header>
 
-        
-    </body>
-</html
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Title & Navigation -->
+            <div class="page-header">
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+
+            <!-- Data Table Card -->
+            <div class="card table-card">
+                <!-- Table Controls -->
+                <div class="table-controls">
+                    <div class="table-controls-left">
+                        <div class="show-dropdown">
+                            <span>Show</span>
+                            <select>
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                        <div class="table-search">
+                            <input type="text" placeholder="Search..." class="input-search">
+                        </div>
+                    </div>
+                    <div class="table-controls-right">
+                        <button class="btn btn-add-customer">
+                            <i class="fas fa-plus"></i> Add Customer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Product</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Payment Mode</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#20462</td>
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://via.placeholder.com/30" alt="Hat" class="product-img">
+                                        <span>Hat</span>
+                                    </div>
+                                </td>
+                                <td>Matt Dickerson</td>
+                                <td>13/05/2022</td>
+                                <td>$4.95</td>
+                                <td>Tranfer Bank</td>
+                                <td><span class="status status-delivered">Delivered</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#20462</td>
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://via.placeholder.com/30" alt="Hat" class="product-img">
+                                        <span>Hat</span>
+                                    </div>
+                                </td>
+                                <td>Matt Dickerson</td>
+                                <td>13/05/2022</td>
+                                <td>$4.95</td>
+                                <td>Tranfer Bank</td>
+                                <td><span class="status status-delivered">Delivered</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#45169</td>
+                                <td>
+                                    <div class="product-cell">
+                                        <img src="https://via.placeholder.com/30" alt="Phone" class="product-img">
+                                        <span>Phone</span>
+                                    </div>
+                                </td>
+                                <td>Trixie Byrd</td>
+                                <td>15/06/2022</td>
+                                <td>$1,149.95</td>
+                                <td>Cash on Delivery</td>
+                                <td><span class="status status-process">Process</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
