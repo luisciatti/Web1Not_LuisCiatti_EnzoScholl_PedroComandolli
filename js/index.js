@@ -1,73 +1,131 @@
-// Seletores principais
-const addCustomerBtn = document.querySelector(".btn-add-customer");
 const tableBody = document.querySelector(".data-table tbody");
+const addCustomerBtn = document.querySelector(".btn-add-customer");
 const searchInput = document.querySelector(".input-search");
 
-// Função para criar uma nova linha na tabela
-function addRow(data) {
-    const tr = document.createElement("tr");
+let editingRow = null;
 
-    tr.innerHTML = `
-        <td>${data.id}</td>
-        <td>${data.nome}</td>
-        <td>${data.categoria}</td>
-        <td>${data.preco}</td>
-        <td>${data.estudio}</td>
-        <td>${data.plataforma}</td>
-        <td><span class="status">${data.status}</span></td>
-        <td>
-            <div class="action-buttons">
-                <button class="action-btn edit"><i class="fas fa-edit"></i></button>
-                <button class="action-btn delete"><i class="fas fa-trash"></i></button>
-            </div>
-        </td>
-    `;
+// Função para abrir formulário
+function openForm(prefillData = null) {
+  // Evita duplicar formulário
+  if (document.getElementById("form-container")) return;
 
-    tableBody.appendChild(tr);
+  fetch("elements/form.html")
+    .then(res => res.text())
+    .then(html => {
+      document.body.insertAdjacentHTML("beforeend", html);
+      attachFormEvents(prefillData);
+    });
 }
 
-// Exemplo de dados para inserir
-const exemploItem = {
-    id: "#001",
-    nome: "Jogo Exemplo",
-    categoria: "Ação",
-    preco: "R$ 199,90",
-    estudio: "CTRLPLAY Studio",
-    plataforma: "PC / PS5",
-    status: "Disponível"
-};
+// Função para inserir linha
+function addRow(data) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${data.id}</td>
+    <td>${data.nome}</td>
+    <td>${data.categoria}</td>
+    <td>${data.preco}</td>
+    <td>${data.estudio}</td>
+    <td>${data.plataforma}</td>
+    <td><span class="status">${data.status}</span></td>
+    <td>
+      <div class="action-buttons">
+        <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+        <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+      </div>
+    </td>
+  `;
+  tableBody.appendChild(tr);
+}
 
-// Evento para adicionar novo item
-addCustomerBtn.addEventListener("click", () => {
-    // Aqui você pode substituir pelo formulário real
-    addRow(exemploItem);
-});
+// Eventos do formulário
+function attachFormEvents(prefillData) {
+  const form = document.getElementById("item-form");
+  const closeBtn = document.querySelector(".btn-close");
 
-// Delegação de eventos para editar e excluir
+  if (prefillData) {
+    document.getElementById("id").value = prefillData.id;
+    document.getElementById("nome").value = prefillData.nome;
+    document.getElementById("categoria").value = prefillData.categoria;
+    document.getElementById("preco").value = prefillData.preco;
+    document.getElementById("estudio").value = prefillData.estudio;
+    document.getElementById("plataforma").value = prefillData.plataforma;
+    document.getElementById("status").value = prefillData.status;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const data = {
+      id: document.getElementById("id").value.trim(),
+      nome: document.getElementById("nome").value.trim(),
+      categoria: document.getElementById("categoria").value.trim(),
+      preco: document.getElementById("preco").value.trim(),
+      estudio: document.getElementById("estudio").value.trim(),
+      plataforma: document.getElementById("plataforma").value.trim(),
+      status: document.getElementById("status").value
+    };
+
+    if (Object.values(data).some(v => v === "")) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    if (editingRow) {
+      const cells = editingRow.querySelectorAll("td");
+      cells[0].innerText = data.id;
+      cells[1].innerText = data.nome;
+      cells[2].innerText = data.categoria;
+      cells[3].innerText = data.preco;
+      cells[4].innerText = data.estudio;
+      cells[5].innerText = data.plataforma;
+      cells[6].innerText = data.status;
+      editingRow = null;
+    } else {
+      addRow(data);
+    }
+
+    document.getElementById("form-container").remove();
+  });
+
+  closeBtn.addEventListener("click", () => {
+    document.getElementById("form-container").remove();
+    editingRow = null;
+  });
+}
+
+// Botão adicionar
+addCustomerBtn.addEventListener("click", () => openForm());
+
+// Delegação editar/excluir
 tableBody.addEventListener("click", (e) => {
-    if (e.target.closest(".edit")) {
-        // Aqui você pode carregar os dados no formulário para edição
-    }
+  if (e.target.closest(".edit")) {
+    editingRow = e.target.closest("tr");
+    const cells = editingRow.querySelectorAll("td");
+    const prefillData = {
+      id: cells[0].innerText,
+      nome: cells[1].innerText,
+      categoria: cells[2].innerText,
+      preco: cells[3].innerText,
+      estudio: cells[4].innerText,
+      plataforma: cells[5].innerText,
+      status: cells[6].innerText
+    };
+    openForm(prefillData);
+  }
 
-    if (e.target.closest(".delete")) {
-        e.target.closest("tr").remove();
-    }
+  if (e.target.closest(".delete")) {
+    e.target.closest("tr").remove();
+  }
 });
 
-// Busca simples na tabela
+// Busca
 searchInput.addEventListener("keyup", () => {
-    const filter = searchInput.value.toLowerCase();
-    const rows = tableBody.querySelectorAll("tr");
+  const filter = searchInput.value.toLowerCase();
+  const rows = tableBody.querySelectorAll("tr");
 
-    rows.forEach(row => {
-        const text = row.innerText.toLowerCase();
-        row.style.display = text.includes(filter) ? "" : "none";
-    });
-});
-
-// Recarregar homepage ao clicar na logo (se existir no header.html)
-document.addEventListener("click", (e) => {
-    if (e.target.closest(".logo")) {
-        location.reload();
-    }
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
 });
