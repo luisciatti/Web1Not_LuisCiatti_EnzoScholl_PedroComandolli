@@ -120,7 +120,8 @@
 
 .main-content {
     padding: var(--space-lg) 0;
-    min-height: calc(100vh - 80px);
+    flex: 1;
+
 }
 
 /* =================================================
@@ -360,28 +361,28 @@
         flex-wrap: wrap;
         gap: var(--space-md);
     }
-    
+
     .header-center {
         order: 3;
         width: 100%;
         margin: 0;
     }
-    
+
     .page-header {
         flex-direction: column;
         gap: var(--space-md);
         align-items: flex-start;
     }
-    
+
     .table-controls {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .data-table {
         font-size: 12px;
     }
-    
+
     .data-table th,
     .data-table td {
         padding: var(--space-sm);
@@ -441,4 +442,3 @@
     border-top: 1px solid var(--color-border);
     font-size: 13px;
 }
-
