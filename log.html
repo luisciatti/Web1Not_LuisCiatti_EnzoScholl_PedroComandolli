@@ -1,94 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Login</title>
-
+    <title>ctrlPLAY | Login</title>
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/log.css">
-   
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
     <div class="container login-page">
-
         <!-- LOGO dentro do container, acima de tudo -->
         <img src="img/logo.png" alt="Logo" class="logo">
-
         <!-- CONTEÚDO PRINCIPAL: esquerda + direita -->
         <div class="login-main">
-
             <!-- ESQUERDA -->
             <div class="login-left">
-
                 <h1 class="title-lg mb-lg">
                     Administre seus jogos com um clique
                 </h1>
-
             </div>
-
             <!-- DIREITA: bolas + card empilhados -->
             <div class="login-right">
-
                 <!-- Bola de cima: fica atrás do card -->
                 <img src="img/gradiant_ball.png" class="gradient-ball ball-1">
-
                 <!-- Card -->
                 <div class="card login-card">
                     <div class="login-content">
-
                         <h2 class="title-md">Login</h2>
-
                         <p class="text text-sm mb-lg">
                             Que bom que está de volta.!
                         </p>
-
                         <form>
-                            <input id = "usuario" class="input mb-md" type="text"  placeholder="Usuário">
-                            <input id = "senha" class="input mb-md" type="password"  placeholder="Senha">
+                            <input id="usuario" class="input mb-md" type="text" placeholder="Usuário">
+                            <input id="senha" class="input mb-md" type="password" placeholder="Senha">
                             <div class="flex align-center gap-sm mb-md">
-                                <input type="checkbox" id="lembre">
-                                <span class="text-sm text" >Lembre-me</span>
+                                <input type="checkbox" id="lembre-me">
+                                <span class="text-sm text">Lembre-me</span>
                             </div>
-                             <input type="submit" id = "login" class="btn btn-primary w-full mb-sm">
+                            <button type="submit" id="login" class="btn btn-primary w-full mb-sm">
+                                Login
+                            </button>
                         </form>
-
-                        <p class="text-center text-sm text mb-md" >
+                        <p class="text-center text-sm text mb-md mt-sm">
                             Esqueceu a senha?
                         </p>
-
                         <div class="divider">
                             <span class="text text-sm">Ou</span>
                         </div>
-
                         <div class="social-login mb-md">
                             <img src="img/icons/google.png">
                             <img src="img/icons/facebook.png">
                             <img src="img/icons/github.png">
                         </div>
-
                         <div class="card-footer">
                             <a href="#">Termos & Condições</a>
                             <a href="#">Suporte</a>
                             <a href="#">Sobre</a>
                         </div>
-
-                        
                     </div>
                 </div>
-
                 <!-- Bola de baixo: fica atrás do card -->
                 <img src="img/gradiant_ball.png" class="gradient-ball ball-2">
-
             </div>
-
         </div>
-
     </div>
- <script src="js/log.js"></script>
+    <script src="js/log.js"></script>
 </body>
+
 </html>

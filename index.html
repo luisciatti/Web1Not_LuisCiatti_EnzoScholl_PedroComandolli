@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTRLPLAY - Dashboard</title>
+    <title>ctrlPLAY | Dashboard</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <!-- Header -->
     <header id="cabecalho"></header>
-
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
@@ -20,7 +22,6 @@
             <div class="page-header">
                 <h1 class="page-title">Dashboard</h1>
             </div>
-
             <!-- Data Table Card -->
             <div class="card table-card">
                 <!-- Table Controls -->
@@ -44,7 +45,6 @@
                         </button>
                     </div>
                 </div>
-
                 <!-- Table -->
                 <div class="table-wrapper">
                     <table class="data-table">
@@ -67,20 +67,9 @@
             </div>
         </div>
     </main>
-    <script src="js/index.js" defer></script>
-     <script>
-        fetch('elements/header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('cabecalho').innerHTML = data;
-            });
-
-        fetch('elements/footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('rodape').innerHTML = data;
-            });
-    </script>
+    <!-- Footer -->
     <footer id="rodape"></footer>
+    <script src="js/index.js" defer></script>
 </body>
+
 </html>
