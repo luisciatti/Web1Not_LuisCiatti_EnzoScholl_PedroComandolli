@@ -7,7 +7,8 @@
     margin: 0 auto;
     padding: 30px 40px 40px;
     display: flex;
-    flex-direction: column;  /* logo em cima, conteúdo embaixo */
+    flex-direction: column;
+    /* logo em cima, conteúdo embaixo */
     min-height: 100vh;
 }
 
@@ -15,7 +16,8 @@
 .login-page .logo {
     width: 80px;
     border-radius: 50%;
-    margin-bottom: 20px;    /* espaço antes do conteúdo principal */
+    margin-bottom: 20px;
+    /* espaço antes do conteúdo principal */
     flex-shrink: 0;
 }
 
@@ -46,7 +48,8 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    position: relative;      /* âncora para as bolas */
+    position: relative;
+    /* âncora para as bolas */
 }
 
 /* Bolas gradiente: absolutas em relação ao .login-right */
@@ -54,7 +57,8 @@
     position: absolute;
     pointer-events: none;
     filter: blur(100px);
-    z-index: 0;             /* atrás do card */
+    z-index: 0;
+    /* atrás do card */
 }
 
 /* Bola de cima: canto superior direito, metade para fora */
@@ -78,7 +82,8 @@
 .login-card {
     width: 390px;
     position: relative;
-    z-index: 1;             /* na frente das bolas */
+    z-index: 1;
+    /* na frente das bolas */
     padding: 45px 40px 30px;
 }
 
@@ -148,4 +153,125 @@
 
 .card-footer a:hover {
     color: #fff;
+}
+
+/* =====================
+   RESPONSIVIDADE
+   ===================== */
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .login-page {
+        padding: 25px 30px;
+    }
+
+    .login-main {
+        gap: 50px;
+        align-items: center;
+    }
+
+    /* Mantém duas colunas, mas mais compactas */
+    .login-left,
+    .login-right {
+        flex: 1;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 360px;
+        padding: 40px 30px 25px;
+    }
+
+    /* Ajuste das bolas */
+    .gradient-ball {
+        filter: blur(90px);
+        opacity: 0.8;
+    }
+
+    .ball-1 {
+        width: 240px;
+        top: -70px;
+        left: -50px;
+    }
+
+    .ball-2 {
+        width: 240px;
+        bottom: -70px;
+        right: -50px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .login-page {
+        padding: 20px;
+    }
+
+    .login-page .logo {
+        margin: 0 auto 20px;
+    }
+
+    .login-main {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .login-left,
+    .login-right {
+        width: 100%;
+        flex: none;
+    }
+
+    .login-left {
+        text-align: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 35px 25px 25px;
+    }
+
+    .gradient-ball {
+        filter: blur(80px);
+        opacity: 0.7;
+    }
+
+    .ball-1 {
+        width: 200px;
+        top: -60px;
+        left: -40px;
+    }
+
+    .ball-2 {
+        width: 200px;
+        bottom: -60px;
+        right: -40px;
+    }
+
+    .divider {
+        margin: 16px 0;
+    }
+
+    .social-login {
+        gap: 16px;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 30px 20px 20px;
+    }
+
+    .social-login img {
+        width: 32px;
+    }
 }

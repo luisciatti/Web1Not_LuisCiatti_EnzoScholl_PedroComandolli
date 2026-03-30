@@ -129,3 +129,25 @@ searchInput.addEventListener("keyup", () => {
     row.style.display = text.includes(filter) ? "" : "none";
   });
 });
+
+// Inserir nome de usuário no header
+function insertUsername() {
+  const username = document.getElementById("username");
+
+  if (username) username.textContent = sessionStorage.getItem("usuario");
+}
+
+// Inserir o header e footer no index
+fetch('elements/header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('cabecalho').innerHTML = data;
+
+    insertUsername();
+  });
+
+fetch('elements/footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('rodape').innerHTML = data;
+  });

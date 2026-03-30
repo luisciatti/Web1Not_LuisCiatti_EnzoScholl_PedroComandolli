@@ -1,17 +1,19 @@
 const usuario = document.getElementById("usuario");
 const senha = document.getElementById("senha");
 const login = document.getElementById("login");
-const lembre = document.getElementById("lembre");
+const lembreMe = document.getElementById("lembre-me");
 
 const validarCampo = (e) => {
     e.preventDefault();
 
     if (usuario.value === "admin" && senha.value === "admin") {
+        sessionStorage.setItem("usuario", usuario.value)
+
         window.open("index.html", "_self");
 
-        if (lembre.checked) {
-            localStorage.setItem("usuario", "admin");
-            localStorage.setItem("senha", "admin");
+        if (lembreMe.checked) {
+            localStorage.setItem("usuario", usuario.value);
+            localStorage.setItem("senha", senha.value);
         }
     } else {
         usuario.style.borderColor = "#ff0000"
