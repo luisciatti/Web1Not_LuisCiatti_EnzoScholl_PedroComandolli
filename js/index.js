@@ -137,6 +137,21 @@ function insertUsername() {
   if (username) username.textContent = sessionStorage.getItem("usuario");
 }
 
+// Trocar nome de usuário quando a página recarrega
+function replaceUsername(e) {
+  if (e.key === "F5") {
+    const username = document.getElementById("username");
+
+    sessionStorage.setItem("usuario", "Visitante");
+
+    if (username) username.textContent = sessionStorage.getItem("usuario");
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  replaceUsername(e);
+});
+
 // Inserir o header e footer no index
 fetch('elements/header.html')
   .then(response => response.text())
