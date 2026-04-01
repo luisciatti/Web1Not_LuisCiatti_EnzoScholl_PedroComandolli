@@ -4,20 +4,48 @@ const searchInput = document.querySelector(".input-search");
 
 let editingRow = null;
 
-// Função para abrir formulário
+// =========================
+// ABRIR FORM
+// =========================
 function openForm(prefillData = null) {
-  // Evita duplicar formulário
   if (document.getElementById("form-container")) return;
 
   fetch("elements/form.html")
     .then(res => res.text())
     .then(html => {
       document.body.insertAdjacentHTML("beforeend", html);
+
       attachFormEvents(prefillData);
+
+      const overlay = document.getElementById("overlay");
+      const form = document.getElementById("form-container");
+
+      // clicar fora fecha
+      if (overlay) {
+        overlay.addEventListener("click", fecharForm);
+      }
+
+      // impedir fechar clicando dentro
+      if (form) {
+        form.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+      }
     });
 }
 
-// Função para inserir linha
+// =========================
+// FECHAR FORM (remove tudo)
+// =========================
+function fecharForm() {
+  document.getElementById("form-container")?.remove();
+  document.getElementById("overlay")?.remove();
+  editingRow = null;
+}
+
+// =========================
+// ADICIONAR LINHA
+// =========================
 function addRow(data) {
   const tr = document.createElement("tr");
   tr.innerHTML = `
@@ -38,11 +66,14 @@ function addRow(data) {
   tableBody.appendChild(tr);
 }
 
-// Eventos do formulário
+// =========================
+// EVENTOS DO FORM
+// =========================
 function attachFormEvents(prefillData) {
   const form = document.getElementById("item-form");
   const closeBtn = document.querySelector(".btn-close");
 
+  // Preencher dados (edição)
   if (prefillData) {
     document.getElementById("id").value = prefillData.id;
     document.getElementById("nome").value = prefillData.nome;
@@ -53,6 +84,7 @@ function attachFormEvents(prefillData) {
     document.getElementById("status").value = prefillData.status;
   }
 
+  // Submit
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -85,23 +117,28 @@ function attachFormEvents(prefillData) {
       addRow(data);
     }
 
-    document.getElementById("form-container").remove();
+    fecharForm(); // fecha tudo corretamente
   });
 
+  // Botão cancelar
   closeBtn.addEventListener("click", () => {
-    document.getElementById("form-container").remove();
-    editingRow = null;
+    fecharForm(); // fecha tudo corretamente
   });
 }
 
-// Botão adicionar
+// =========================
+// BOTÃO ADICIONAR
+// =========================
 addCustomerBtn.addEventListener("click", () => openForm());
 
-// Delegação editar/excluir
+// =========================
+// EDITAR / EXCLUIR
+// =========================
 tableBody.addEventListener("click", (e) => {
   if (e.target.closest(".edit")) {
     editingRow = e.target.closest("tr");
     const cells = editingRow.querySelectorAll("td");
+
     const prefillData = {
       id: cells[0].innerText,
       nome: cells[1].innerText,
@@ -111,6 +148,7 @@ tableBody.addEventListener("click", (e) => {
       plataforma: cells[5].innerText,
       status: cells[6].innerText
     };
+
     openForm(prefillData);
   }
 
@@ -119,7 +157,9 @@ tableBody.addEventListener("click", (e) => {
   }
 });
 
-// Busca
+// =========================
+// BUSCA
+// =========================
 searchInput.addEventListener("keyup", () => {
   const filter = searchInput.value.toLowerCase();
   const rows = tableBody.querySelectorAll("tr");
@@ -130,19 +170,35 @@ searchInput.addEventListener("keyup", () => {
   });
 });
 
-// Inserir nome de usuário no header
+// =========================
+// HEADER / FOOTER
+// =========================
 function insertUsername() {
   const username = document.getElementById("username");
-
   if (username) username.textContent = sessionStorage.getItem("usuario");
 }
 
-// Inserir o header e footer no index
+
+
+
+function replaceUsername(e) {
+  if (e.key === "F5") {
+    const username = document.getElementById("username");
+
+    sessionStorage.setItem("usuario", "Visitante");
+
+    if (username) username.textContent = sessionStorage.getItem("usuario");
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  replaceUsername(e);
+});
+
 fetch('elements/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('cabecalho').innerHTML = data;
-
     insertUsername();
   });
 
