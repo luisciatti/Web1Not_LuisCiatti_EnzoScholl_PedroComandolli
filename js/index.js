@@ -1,8 +1,9 @@
 const tableBody = document.querySelector(".data-table tbody");
-const addCustomerBtn = document.querySelector(".btn-add-customer");
+const addGameBtn = document.querySelector(".btn-add-game");
 const searchInput = document.querySelector(".input-search");
 
 let editingRow = null;
+let currentId = localStorage.length === 0 ? 1 : localStorage.length - 1;
 
 // =========================
 // ABRIR FORM
@@ -55,7 +56,7 @@ function addRow(data) {
     <td>${data.preco}</td>
     <td>${data.estudio}</td>
     <td>${data.plataforma}</td>
-    <td><span class="status">${data.status}</span></td>
+    <td>${data.status}</td>
     <td>
       <div class="action-buttons">
         <button class="action-btn edit"><i class="fas fa-edit"></i></button>
@@ -67,6 +68,32 @@ function addRow(data) {
 }
 
 // =========================
+// ADICIONAR LINHAS QUANDO A PÁGINA RECARREGA
+// =========================
+function addRowWhenLoaded() {
+  let data = null;
+
+  for (let i = 1; i <= localStorage.length; i++) {
+    let splittedItem = localStorage.getItem(i).split(",");
+
+    data = {
+      id: splittedItem[0],
+      nome: splittedItem[1],
+      categoria: splittedItem[2],
+      preco: splittedItem[3],
+      estudio: splittedItem[4],
+      plataforma: splittedItem[5],
+      status: splittedItem[6]
+    };
+
+    addRow(data);
+  }
+}
+
+if (localStorage.length > 0)
+  document.addEventListener("DOMContentLoaded", addRowWhenLoaded);
+
+// =========================
 // EVENTOS DO FORM
 // =========================
 function attachFormEvents(prefillData) {
@@ -75,7 +102,6 @@ function attachFormEvents(prefillData) {
 
   // Preencher dados (edição)
   if (prefillData) {
-    document.getElementById("id").value = prefillData.id;
     document.getElementById("nome").value = prefillData.nome;
     document.getElementById("categoria").value = prefillData.categoria;
     document.getElementById("preco").value = prefillData.preco;
@@ -89,7 +115,7 @@ function attachFormEvents(prefillData) {
     e.preventDefault();
 
     const data = {
-      id: document.getElementById("id").value.trim(),
+      id: currentId,
       nome: document.getElementById("nome").value.trim(),
       categoria: document.getElementById("categoria").value.trim(),
       preco: document.getElementById("preco").value.trim(),
@@ -98,6 +124,16 @@ function attachFormEvents(prefillData) {
       status: document.getElementById("status").value
     };
 
+    let localData = [
+      data.id,
+      data.nome,
+      data.categoria,
+      data.preco,
+      data.estudio,
+      data.plataforma,
+      data.status
+    ];
+
     if (Object.values(data).some(v => v === "")) {
       alert("Preencha todos os campos!");
       return;
@@ -105,16 +141,23 @@ function attachFormEvents(prefillData) {
 
     if (editingRow) {
       const cells = editingRow.querySelectorAll("td");
-      cells[0].innerText = data.id;
       cells[1].innerText = data.nome;
       cells[2].innerText = data.categoria;
       cells[3].innerText = data.preco;
       cells[4].innerText = data.estudio;
       cells[5].innerText = data.plataforma;
       cells[6].innerText = data.status;
+
+      localData[0] = cells[0].innerText;
+
+      localStorage.setItem(cells[0].innerText, localData);
+
       editingRow = null;
     } else {
       addRow(data);
+
+      localStorage.setItem(data.id, localData);
+      currentId = localStorage.length + 1;
     }
 
     fecharForm(); // fecha tudo corretamente
@@ -129,7 +172,7 @@ function attachFormEvents(prefillData) {
 // =========================
 // BOTÃO ADICIONAR
 // =========================
-addCustomerBtn.addEventListener("click", () => openForm());
+addGameBtn.addEventListener("click", () => openForm());
 
 // =========================
 // EDITAR / EXCLUIR
@@ -153,6 +196,11 @@ tableBody.addEventListener("click", (e) => {
   }
 
   if (e.target.closest(".delete")) {
+    const tdId = e.target.closest("tr").querySelectorAll("td");
+
+    localStorage.removeItem(tdId[0].innerText);
+    currentId = tdId[0].innerText;
+
     e.target.closest("tr").remove();
   }
 });
@@ -173,33 +221,22 @@ searchInput.addEventListener("keyup", () => {
 // =========================
 // HEADER / FOOTER
 // =========================
-function insertUsername() {
-  const username = document.getElementById("username");
-  if (username) username.textContent = sessionStorage.getItem("usuario");
-}
-
-
-
-
-function replaceUsername(e) {
-  if (e.key === "F5") {
-    const username = document.getElementById("username");
-
-    sessionStorage.setItem("usuario", "Visitante");
-
-    if (username) username.textContent = sessionStorage.getItem("usuario");
-  }
-}
-
-document.addEventListener('keydown', (e) => {
-  replaceUsername(e);
-});
+let logoImg = null;
+let username = null;
+let returnLog = null;
 
 fetch('elements/header.html')
   .then(response => response.text())
   .then(data => {
     document.getElementById('cabecalho').innerHTML = data;
+
+    logoImg = document.querySelector(".logo img");
+    username = document.getElementById("username");
+    returnLog = document.getElementById("return-log");
+
+    logoImg.addEventListener("click", reloadPage);
     insertUsername();
+    returnLog.addEventListener("click", returnToLog);
   });
 
 fetch('elements/footer.html')
@@ -207,3 +244,26 @@ fetch('elements/footer.html')
   .then(data => {
     document.getElementById('rodape').innerHTML = data;
   });
+
+function reloadPage() {
+  if (logoImg) location.reload();
+}
+
+function insertUsername() {
+  if (username) username.textContent = sessionStorage.getItem("usuario");
+}
+
+function replaceUsername(e) {
+  if (e.key === "F5") {
+    sessionStorage.setItem("usuario", "Visitante");
+    insertUsername();
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  replaceUsername(e);
+});
+
+function returnToLog() {
+  if (returnLog) window.open("log.html", "_self");
+}

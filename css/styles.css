@@ -33,9 +33,8 @@
     color: var(--color-text);
 }
 
-.logo i {
-    font-size: 28px;
-    color: var(--color-text-light);
+.logo img {
+    cursor: pointer;
 }
 
 .logo-title {
@@ -46,10 +45,27 @@
     font-size: 15px;
 }
 
-.header-center {
+/* .header-center {
     flex: 1;
     max-width: 600px;
     margin: 0 var(--space-lg);
+} */
+
+.header-menu {
+    list-style: none;
+}
+
+#return-log {
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: transparent;
+    color: white;
+}
+
+#return-log:hover {
+    opacity: 0.9;
 }
 
 .search-box {
@@ -108,8 +124,8 @@
 
 .user-profile {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 10px;
 }
 
 .user-profile img {
@@ -204,11 +220,6 @@
     gap: var(--space-md);
 }
 
-
-.table-search {
-    width: 200px;
-}
-
 .input-search {
     width: 100%;
     padding: var(--space-sm) var(--space-md);
@@ -228,7 +239,7 @@
     border-color: var(--color-primary);
 }
 
-.btn-add-customer {
+.btn-add-game {
     background: var(--color-primary);
     color: white;
     border: none;
@@ -237,12 +248,13 @@
     font-size: 14px;
     cursor: pointer;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: var(--space-sm);
     transition: 0.3s;
 }
 
-.btn-add-customer:hover {
+.btn-add-game:hover {
     opacity: 0.9;
 }
 
@@ -359,10 +371,18 @@
         gap: var(--space-md);
     }
 
-    .header-center {
+    /* .header-center {
         order: 3;
         width: 100%;
         margin: 0;
+    } */
+
+    .header-right {
+        gap: 2px;
+    }
+
+    .menu-item {
+        width: 100%;
     }
 
     .page-header {
@@ -371,7 +391,18 @@
         align-items: flex-start;
     }
 
-    
+    .table-controls-left,
+    .table-controls-right {
+        width: 100%;
+    }
+
+    .table-search {
+        width: 100%;
+    }
+
+    .btn-add-game {
+        width: 100%;
+    }
 
     .data-table {
         font-size: 12px;
@@ -413,7 +444,8 @@
     margin-bottom: var(--space-sm);
 }
 
-.footer-links ul {
+.footer-links ul,
+.footer-members ul {
     list-style: none;
 }
 

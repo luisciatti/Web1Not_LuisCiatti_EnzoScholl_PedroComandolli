@@ -12,54 +12,73 @@
 
 <body>
 
-    <div class="container login-page">
-        <!-- LOGO dentro do container, acima de tudo -->
-        <img src="img/logo.png" alt="Logo" class="logo">
-        <!-- CONTEÚDO PRINCIPAL: esquerda + direita -->
+    <main class="container login-page" role="main">
+
+        <!-- Logo -->
+        <img src="img/logo.png" alt="ctrlPLAY" class="logo">
+
         <div class="login-main">
+
             <!-- ESQUERDA -->
             <div class="login-left">
                 <h1 class="title-lg mb-lg">
                     Administre seus jogos com um clique
                 </h1>
             </div>
-            <!-- DIREITA: bolas + card empilhados -->
+
+            <!-- DIREITA -->
             <div class="login-right">
-                <!-- Bola de cima: fica atrás do card -->
-                <img src="img/gradiant_ball.png" class="gradient-ball ball-1">
-                <!-- Card -->
+
+                <!-- Elemento decorativo -->
+                <img src="img/gradiant_ball.png" class="gradient-ball ball-1" alt="" aria-hidden="true">
+
                 <div class="card login-card">
                     <div class="login-content">
+
                         <h2 class="title-md">Login</h2>
+
                         <p class="text text-sm mb-lg">
-                            Que bom que está de volta.!
+                            Que bom que está de volta!
                         </p>
-                        <form>
-                            <input id="usuario" class="input mb-md" type="text" placeholder="Usuário">
-                            <input id="senha" class="input mb-md" type="password" placeholder="Senha">
+
+                        <form aria-label="Formulário de login">
+
+                            <input id="usuario" class="input mb-md" type="text" placeholder="Usuário" required>
+
+                            <input id="senha" class="input mb-md" type="password" placeholder="Senha" required>
+
                             <div class="flex align-center gap-sm mb-md">
                                 <input type="checkbox" id="lembre-me">
-                                <span class="text-sm text">Lembre-me</span>
+                                <label for="lembre-me" class="text-sm text">Lembre-me</label>
                             </div>
-                            <button type="submit" id="login" class="btn btn-primary w-full mb-sm">
+
+                            <button type="submit" id="login" class="btn btn-primary w-full mb-sm"
+                                aria-label="Entrar no sistema">
                                 Login
                             </button>
+
                         </form>
-                        <p class="text-center text-sm text mb-md mt-sm">
+
+                        <p class="text-center text-sm text mb-md mt-sm" aria-label="Recuperar senha">
                             Esqueceu a senha?
                         </p>
+
                         <div class="card-footer">
                             <a href="#">Termos & Condições</a>
                             <a href="#">Suporte</a>
                             <a href="#">Sobre</a>
                         </div>
+
                     </div>
                 </div>
-                <!-- Bola de baixo: fica atrás do card -->
-                <img src="img/gradiant_ball.png" class="gradient-ball ball-2">
+
+                <!-- Elemento decorativo -->
+                <img src="img/gradiant_ball.png" class="gradient-ball ball-2" alt="" aria-hidden="true">
+
             </div>
         </div>
-    </div>
+    </main>
+
     <script src="js/log.js"></script>
 </body>
 

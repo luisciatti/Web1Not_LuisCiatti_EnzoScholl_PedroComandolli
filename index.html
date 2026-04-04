@@ -14,54 +14,66 @@
 
 <body>
     <!-- Header -->
-    <header id="cabecalho"></header>
+    <header id="cabecalho" role="banner" aria-label="Cabeçalho do site"></header>
+
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content" role="main">
         <div class="container">
-            <!-- Page Title & Navigation -->
+
+            <!-- Page Title -->
             <div class="page-header">
                 <h1 class="page-title">Dashboard</h1>
             </div>
+
             <!-- Data Table Card -->
-            <div class="card table-card">
+            <div class="card table-card" aria-label="Tabela de jogos">
+
                 <!-- Table Controls -->
                 <div class="table-controls">
                     <div class="table-controls-left">
-     
+
                         <div class="table-search">
-                            <input type="text" placeholder="Search..." class="input-search">
+                            <label for="search" class="sr-only">Pesquisar jogos</label>
+                            <input type="text" id="search" placeholder="Pesquisar..." class="input-search"
+                                aria-label="Pesquisar jogos">
                         </div>
                     </div>
+
                     <div class="table-controls-right">
-                        <button class="btn btn-add-customer">
-                            <i class="fas fa-plus"></i> Add Customer
+                        <button class="btn btn-add-game" aria-label="Adicionar novo jogo">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            Adicionar jogo
                         </button>
                     </div>
                 </div>
+
                 <!-- Table -->
                 <div class="table-wrapper">
-                    <table class="data-table">
+                    <table class="data-table" aria-describedby="descricao-tabela">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Categoria</th>
-                                <th>Preço</th>
-                                <th>Estudio</th>
-                                <th>Plataforma/s</th>
-                                <th>Status</th>
-                                <th>Ações</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Estúdio</th>
+                                <th scope="col">Plataforma/s</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </main>
+
     <!-- Footer -->
-    <footer id="rodape"></footer>
+    <footer id="rodape" role="contentinfo" aria-label="Rodapé do site"></footer>
+
     <script src="js/index.js" defer></script>
 </body>
 
