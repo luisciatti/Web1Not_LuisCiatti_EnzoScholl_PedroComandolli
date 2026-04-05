@@ -1,28 +1,32 @@
-<header class="header">
+<header class="header" role="banner">
     <div class="header-container">
-        <div class="header-left">
-            <div class="logo">
-                <img src="../img/logo.png" alt="Logo da ctrlPLAY">
-                <span class="logo-title"><span class="logo-title-tiny">CTRL</span>PLAY</span>
-            </div>
-        </div>
 
-        <div class="header-center">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search here...">
+        <div class="header-left">
+            <div class="logo" aria-label="Ir para a página inicial">
+                <img src="./img/logo.png" alt="ctrlPLAY">
+                <span class="logo-title">
+                    <span class="logo-title-tiny">CTRL</span>PLAY
+                </span>
             </div>
         </div>
 
         <div class="header-right">
-            <div class="toggle-buttons">
-                <button class="toggle-btn"><i class="fas fa-toggle-on"></i></button>
-                <button class="toggle-btn"><i class="fas fa-moon"></i></button>
+
+            <div class="user-profile" aria-label="Informações do usuário">
+                <span id="username" aria-label="Nome do usuário"></span>
+                <img src="https://i.pravatar.cc/40" alt="Foto do usuário">
             </div>
-            <div class="user-profile">
-                <img src="https://i.pravatar.cc/40" alt="User">
-                <span id="username"></span>
-            </div>
+
+            <nav aria-label="Menu do usuário">
+                <ul class="header-menu">
+                    <li>
+                        <button id="return-log" aria-label="Sair do sistema">
+                            <i class="fa-solid fa-arrow-right-from-bracket" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
         </div>
     </div>
 </header>

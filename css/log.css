@@ -112,25 +112,6 @@
     background: #2a2f36;
 }
 
-/* =====================
-   ÍCONES SOCIAIS
-   ===================== */
-
-.social-login {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-login img {
-    width: 36px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.social-login img:hover {
-    transform: scale(1.1);
-}
 
 /* =====================
    RODAPÉ DO CARD
@@ -158,48 +139,6 @@
 /* =====================
    RESPONSIVIDADE
    ===================== */
-
-/* TABLET */
-@media (max-width: 1024px) {
-    .login-page {
-        padding: 25px 30px;
-    }
-
-    .login-main {
-        gap: 50px;
-        align-items: center;
-    }
-
-    /* Mantém duas colunas, mas mais compactas */
-    .login-left,
-    .login-right {
-        flex: 1;
-    }
-
-    .login-card {
-        width: 100%;
-        max-width: 360px;
-        padding: 40px 30px 25px;
-    }
-
-    /* Ajuste das bolas */
-    .gradient-ball {
-        filter: blur(90px);
-        opacity: 0.8;
-    }
-
-    .ball-1 {
-        width: 240px;
-        top: -70px;
-        left: -50px;
-    }
-
-    .ball-2 {
-        width: 240px;
-        bottom: -70px;
-        right: -50px;
-    }
-}
 
 /* MOBILE */
 @media (max-width: 768px) {
@@ -249,29 +188,9 @@
         right: -40px;
     }
 
-    .divider {
-        margin: 16px 0;
-    }
-
-    .social-login {
-        gap: 16px;
-    }
-
     .card-footer {
         flex-direction: column;
         align-items: center;
         gap: 10px;
-    }
-}
-
-
-/* SMALL MOBILE */
-@media (max-width: 480px) {
-    .login-card {
-        padding: 30px 20px 20px;
-    }
-
-    .social-login img {
-        width: 32px;
     }
 }

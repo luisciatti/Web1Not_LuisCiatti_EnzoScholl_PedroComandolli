@@ -10,7 +10,6 @@
     --color-border: #323232;
 
     --color-primary: #809dc5;
-    --color-primary-dark: #0a8f35;
 
     --color-secondary: #1f2937;
 
@@ -75,36 +74,10 @@ body {
     display: flex;
 }
 
-.flex-column {
-    flex-direction: column;
-}
-
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.grid {
-    display: grid;
-}
-
-.full-height {
-    min-height: 100vh;
-}
-
 
 /* =================================================
    ALIGNMENT
 ================================================= */
-
-.justify-center {
-    justify-content: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
 
 .align-center {
     align-items: center;
@@ -117,20 +90,10 @@ body {
 
 /* Margin */
 
-.m-auto {
-    margin: auto;
-}
+
 
 .mt-sm {
     margin-top: var(--space-sm);
-}
-
-.mt-md {
-    margin-top: var(--space-md);
-}
-
-.mt-lg {
-    margin-top: var(--space-lg);
 }
 
 .mb-sm {
@@ -146,25 +109,6 @@ body {
 }
 
 
-/* Padding */
-
-.p-sm {
-    padding: var(--space-sm);
-}
-
-.p-md {
-    padding: var(--space-md);
-}
-
-.p-lg {
-    padding: var(--space-lg);
-}
-
-.p-xl {
-    padding: var(--space-xl);
-}
-
-
 /* =================================================
    GAP (ESPAÇO ENTRE ELEMENTOS FLEX/GRID)
 ================================================= */
@@ -173,15 +117,6 @@ body {
     gap: var(--space-sm);
 }
 
-.gap-md {
-    gap: var(--space-md);
-}
-
-.gap-lg {
-    gap: var(--space-lg);
-}
-
-
 /* =================================================
    WIDTH (LARGURA)
 ================================================= */
@@ -189,11 +124,6 @@ body {
 .w-full {
     width: 100%;
 }
-
-.w-auto {
-    width: auto;
-}
-
 
 /* =================================================
    TYPOGRAPHY
@@ -246,23 +176,6 @@ body {
 .btn-primary:hover {
     opacity: 0.85;
 }
-
-.btn-outline {
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-}
-
-.btn-sm {
-    padding: 8px 16px;
-    font-size: 14px;
-}
-
-.btn-lg {
-    padding: 16px 32px;
-    font-size: 18px;
-}
-
 
 /* Inputs */
 

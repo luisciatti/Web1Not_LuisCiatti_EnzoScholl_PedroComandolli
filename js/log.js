@@ -14,6 +14,8 @@ const validarCampo = (e) => {
         if (lembreMe.checked) {
             localStorage.setItem("usuario", usuario.value);
             localStorage.setItem("senha", senha.value);
+        } else {
+            localStorage.clear();
         }
     } else {
         usuario.style.borderColor = "#ff0000"
