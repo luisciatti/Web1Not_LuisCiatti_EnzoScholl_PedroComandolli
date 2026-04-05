@@ -5,9 +5,7 @@ const searchInput = document.querySelector(".input-search");
 let editingRow = null;
 let currentId = localStorage.length === 0 ? 1 : localStorage.length - 1;
 
-// =========================
 // ABRIR FORM
-// =========================
 function openForm(prefillData = null) {
   if (document.getElementById("form-container")) return;
 
@@ -35,18 +33,14 @@ function openForm(prefillData = null) {
     });
 }
 
-// =========================
 // FECHAR FORM (remove tudo)
-// =========================
 function fecharForm() {
   document.getElementById("form-container")?.remove();
   document.getElementById("overlay")?.remove();
   editingRow = null;
 }
 
-// =========================
 // ADICIONAR LINHA
-// =========================
 function addRow(data) {
   const tr = document.createElement("tr");
   tr.innerHTML = `
@@ -67,9 +61,7 @@ function addRow(data) {
   tableBody.appendChild(tr);
 }
 
-// =========================
 // ADICIONAR LINHAS QUANDO A PÁGINA RECARREGA
-// =========================
 function addRowWhenLoaded() {
   let data = null;
 
@@ -93,9 +85,7 @@ function addRowWhenLoaded() {
 if (localStorage.length > 0)
   document.addEventListener("DOMContentLoaded", addRowWhenLoaded);
 
-// =========================
 // EVENTOS DO FORM
-// =========================
 function attachFormEvents(prefillData) {
   const form = document.getElementById("item-form");
   const closeBtn = document.querySelector(".btn-close");
@@ -169,14 +159,10 @@ function attachFormEvents(prefillData) {
   });
 }
 
-// =========================
 // BOTÃO ADICIONAR
-// =========================
 addGameBtn.addEventListener("click", () => openForm());
 
-// =========================
 // EDITAR / EXCLUIR
-// =========================
 tableBody.addEventListener("click", (e) => {
   if (e.target.closest(".edit")) {
     editingRow = e.target.closest("tr");
@@ -205,9 +191,7 @@ tableBody.addEventListener("click", (e) => {
   }
 });
 
-// =========================
 // BUSCA
-// =========================
 searchInput.addEventListener("keyup", () => {
   const filter = searchInput.value.toLowerCase();
   const rows = tableBody.querySelectorAll("tr");
@@ -218,9 +202,7 @@ searchInput.addEventListener("keyup", () => {
   });
 });
 
-// =========================
 // HEADER / FOOTER
-// =========================
 let logoImg = null;
 let username = null;
 let returnLog = null;
@@ -253,16 +235,16 @@ function insertUsername() {
   if (username) username.textContent = sessionStorage.getItem("usuario");
 }
 
-function replaceUsername(e) {
+document.addEventListener("keydown", (e) => {
   if (e.key === "F5") {
     sessionStorage.setItem("usuario", "Visitante");
-    insertUsername();
   }
-}
-
-document.addEventListener("keydown", (e) => {
-  replaceUsername(e);
 });
+
+window.addEventListener("beforeunload", function () {
+  sessionStorage.setItem("usuario", "Visitante");
+});
+
 
 function returnToLog() {
   if (returnLog) window.open("log.html", "_self");
