@@ -33,18 +33,6 @@
   color: white;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
 /* Placeholder */
 #form-container input::placeholder {
   color: #aaa;
@@ -125,19 +113,4 @@
   backdrop-filter: blur(5px);
 
   z-index: 999;
-}
-
-#form-container {
-  position: fixed;
-  z-index: 1000;
-}
-
-@keyframes fadeOverlay {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

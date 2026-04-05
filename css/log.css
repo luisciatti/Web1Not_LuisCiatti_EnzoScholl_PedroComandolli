@@ -112,25 +112,6 @@
     background: #2a2f36;
 }
 
-/* =====================
-   ÍCONES SOCIAIS
-   ===================== */
-
-.social-login {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-login img {
-    width: 36px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.social-login img:hover {
-    transform: scale(1.1);
-}
 
 /* =====================
    RODAPÉ DO CARD
@@ -205,14 +186,6 @@
         width: 200px;
         bottom: -60px;
         right: -40px;
-    }
-
-    .divider {
-        margin: 16px 0;
-    }
-
-    .social-login {
-        gap: 16px;
     }
 
     .card-footer {
