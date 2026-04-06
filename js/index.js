@@ -3,7 +3,7 @@ const addGameBtn = document.querySelector(".btn-add-game");
 const searchInput = document.querySelector(".input-search");
 
 let editingRow = null;
-let currentId = localStorage.length === 0 ? 1 : localStorage.length - 1;
+let currentId = localStorage.length === 0 ? 1 : localStorage.length + 1;
 
 // ABRIR FORM
 function openForm(prefillData = null) {
