@@ -40,7 +40,7 @@ function fecharForm() {
   editingRow = null;
 }
 
-// ADICIONAR LINHA
+// ADICIONAR LINHA na tabela do index
 function addRow(data) {
   const tr = document.createElement("tr");
   tr.innerHTML = `
@@ -61,7 +61,7 @@ function addRow(data) {
   tableBody.appendChild(tr);
 }
 
-// ADICIONAR LINHAS QUANDO A PÁGINA RECARREGA
+// ADICIONAR LINHAS QUANDO A PÁGINA RECARREGA - localStorage
 function addRowWhenLoaded() {
   let data = null;
 
@@ -82,8 +82,11 @@ function addRowWhenLoaded() {
   }
 }
 
+//Verifica se tem localstorage e se tiver quando pagina carregar, chama funcao
 if (localStorage.length > 0)
   document.addEventListener("DOMContentLoaded", addRowWhenLoaded);
+
+
 
 // EVENTOS DO FORM
 function attachFormEvents(prefillData) {
@@ -188,6 +191,10 @@ tableBody.addEventListener("click", (e) => {
     currentId = tdId[0].innerText;
 
     e.target.closest("tr").remove();
+
+    if(localStorage.length==0){
+      currentId = 1;
+    }
   }
 });
 
