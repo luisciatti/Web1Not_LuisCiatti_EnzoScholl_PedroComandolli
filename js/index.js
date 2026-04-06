@@ -242,12 +242,6 @@ function insertUsername() {
   if (username) username.textContent = sessionStorage.getItem("usuario");
 }
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "F5") {
-    sessionStorage.setItem("usuario", "Visitante");
-  }
-});
-
 window.addEventListener("beforeunload", function () {
   sessionStorage.setItem("usuario", "Visitante");
 });
