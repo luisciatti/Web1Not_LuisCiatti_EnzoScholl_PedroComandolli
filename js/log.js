@@ -19,7 +19,8 @@ const validarCampo = (e) => {
         }
     } else {
         usuario.style.borderColor = "#ff0000"
-        senha.style.borderColor = "#ff0000"
+        senha.style.borderColor = "#ff0000" 
+        login.disabled = true;
 
         senha.insertAdjacentHTML("afterend", `
             <div id="warning" class="mb-md" style="font-size: 11px; color: #ff0000">
@@ -30,9 +31,10 @@ const validarCampo = (e) => {
         setTimeout(() => {
             usuario.style.borderColor = "white"
             senha.style.borderColor = "white"
-
+            login.disabled = false;
             document.getElementById("warning").remove();
         }, 3e3);
+
     }
 };
 
