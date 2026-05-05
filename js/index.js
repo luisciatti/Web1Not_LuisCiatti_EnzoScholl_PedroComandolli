@@ -43,6 +43,9 @@ function fecharForm() {
 // ADICIONAR LINHA na tabela do index
 function addRow(data) {
   const tr = document.createElement("tr");
+
+  tr.setAttribute("scope", "row");
+
   tr.innerHTML = `
     <td>${data.id}</td>
     <td>${data.nome}</td>
