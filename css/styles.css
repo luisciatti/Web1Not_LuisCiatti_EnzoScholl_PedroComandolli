@@ -201,37 +201,57 @@
 
 .table-wrapper {
     overflow-x: auto;
+    border-radius: var(--radius-sm);
 }
 
 .data-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
+    user-select: none;
 }
 
-.data-table thead {
+.data-table thead,
+.data-table tbody {
     background: var(--color-secondary);
 }
 
+.data-table tbody tr {
+    transition: ease-in 0.2s background;
+}
+
 .data-table th {
-    padding: var(--space-md);
+    padding: var(--space-lg) var(--space-md);
     text-align: left;
     font-weight: 500;
-    color: var(--color-text-light);
-    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-bottom: 2px solid var(--color-bg);
     white-space: nowrap;
 }
 
 .data-table td {
-    padding: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 2px solid var(--color-bg);
+    color: var(--color-text-light);
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.data-table td {
-    padding: var(--space-md);
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-text);
+.data-table th:nth-child(4),
+.data-table td:nth-child(4) {
+    text-align: right;
+}
+
+.data-table td:nth-child(7) .status-grid {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: center;
+    width: min-content;
+}
+
+.data-table td:nth-child(7) .status-grid img {
+    width: 20px;
 }
 
 [data-visibility="true"] {
@@ -239,7 +259,7 @@
 }
 
 .data-table tbody tr:hover {
-    background: var(--color-secondary);
+    background: var(--color-bg);
 }
 
 /* =================================================
@@ -274,13 +294,15 @@
 }
 
 .action-btn {
+    width: 50px;
+    height: 50px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: var(--space-xs);
-    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    border-radius: 100%;
     transition: 0.3s;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .action-btn.edit {
@@ -342,10 +364,31 @@
         font-size: 12px;
     }
 
-    .data-table th,
-    .data-table td {
-        padding: var(--space-sm);
+    .data-table th {
+        padding: var(--space-lg);
     }
+
+    .data-table td {
+        max-width: 120px;
+    }
+}
+
+/* =================================================
+   Tooltip
+================================================= */
+
+#tooltip {
+    display: none;
+    position: absolute;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 3px;
+    background-color: #4e4e4e;
+    text-align: center;
+    color: #d2d2d2;
+}
+
+#tooltip.active {
+    display: block;
 }
 
 /* =================================================
