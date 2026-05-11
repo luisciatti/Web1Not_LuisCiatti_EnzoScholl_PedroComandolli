@@ -131,6 +131,24 @@ function attachFormEvents(prefillData) {
       alert("Preencha todos os campos!");
       return;
     }
+    const nomeInput = document.getElementById("nome");
+
+if (nomeInput.value.trim().length < 2) {
+    nomeInput.style.borderColor = "#ff0000";
+
+    nomeInput.insertAdjacentHTML("afterend", `
+        <div id="warning" style="font-size: 11px; color: #ff0000">
+            O nome deve ter no mínimo 2 caracteres
+        </div>
+    `);
+
+    setTimeout(() => {
+        nomeInput.style.borderColor = "white";
+        document.getElementById("warning")?.remove();
+    }, 3000);
+
+    return;
+}
 
     if (editingRow) {
       const cells = editingRow.querySelectorAll("td");

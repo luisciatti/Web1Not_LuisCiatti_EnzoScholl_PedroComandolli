@@ -43,20 +43,26 @@
 
                         <form aria-label="Formulário de login">
 
-                            <input id="usuario" class="input mb-md" type="text" placeholder="Usuário" required>
-
-                            <input id="senha" class="input mb-md" type="password" placeholder="Senha" required>
-
-                            <div class="flex align-center gap-sm mb-md">
-                                <input type="checkbox" id="lembre-me">
-                                <label for="lembre-me" class="text-sm text">Lembre-me</label>
-                            </div>
-
-                            <button type="submit" id="login" class="btn btn-primary w-full mb-sm"
-                                aria-label="Entrar no sistema">
-                                Login
-                            </button>
-
+                          <div class="form-field mb-md">
+                            <input id="usuario" type="text" required>
+                            <label for="usuario">Usuário</label>
+                          </div>
+                      
+                          <div class="form-field mb-md">
+                            <input id="senha" type="password" required>
+                            <label for="senha">Senha</label>
+                          </div>
+                      
+                          <div class="flex align-center gap-sm mb-md">
+                            <input type="checkbox" id="lembre-me">
+                            <label for="lembre-me" class="text-sm text">Lembre-me</label>
+                          </div>
+                      
+                          <button type="submit" id="login" class="btn btn-primary w-full mb-sm"
+                            aria-label="Entrar no sistema">
+                            Login
+                          </button>
+                      
                         </form>
 
                         <p class="text-center text-sm text mb-md mt-sm" aria-label="Recuperar senha">
