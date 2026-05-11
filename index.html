@@ -30,14 +30,6 @@
 
                 <!-- Table Controls -->
                 <div class="table-controls">
-                    <div class="table-controls-left">
-
-                        <div class="table-search">
-                            <label for="search" class="sr-only">Pesquisar jogos</label>
-                            <input type="text" id="search" placeholder="Pesquisar..." class="input-search"
-                                aria-label="Pesquisar jogos">
-                        </div>
-                    </div>
 
                     <div class="table-controls-right">
                         <button class="btn btn-add-game" aria-label="Adicionar novo jogo">
@@ -52,6 +44,9 @@
                     <table class="data-table" aria-describedby="descricao-tabela">
                         <thead>
                             <tr>
+                                <th class="checkbox-cell">
+                                  <input type="checkbox" id="select-all">
+                                </th>
                                 <th role="columnheader" scope="col" data-visibility="true">ID</th>
                                 <th role="columnheader" scope="col" data-visibility="false">Nome</th>
                                 <th role="columnheader" scope="col" data-visibility="true">Categoria</th>

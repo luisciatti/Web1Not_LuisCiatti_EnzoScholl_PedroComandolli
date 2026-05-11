@@ -144,7 +144,7 @@
 
 .table-controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
     margin-bottom: var(--space-md);
     flex-wrap: wrap;
@@ -155,25 +155,6 @@
     display: flex;
     align-items: center;
     gap: var(--space-md);
-}
-
-.input-search {
-    width: 100%;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--color-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    color: var(--color-text);
-    font-size: 14px;
-    outline: none;
-}
-
-.input-search::placeholder {
-    color: var(--color-text-light);
-}
-
-.input-search:focus {
-    border-color: var(--color-primary);
 }
 
 .btn-add-game {
@@ -238,19 +219,19 @@
     text-overflow: ellipsis;
 }
 
-.data-table th:nth-child(4),
-.data-table td:nth-child(4) {
+.data-table th:nth-child(5),
+.data-table td:nth-child(5) {
     text-align: right;
 }
 
-.data-table td:nth-child(7) .status-grid {
+.data-table td:nth-child(8) .status-grid {
     display: flex;
     gap: var(--space-sm);
     align-items: center;
     width: min-content;
 }
 
-.data-table td:nth-child(7) .status-grid img {
+.data-table td:nth-child(8) .status-grid img {
     width: 20px;
 }
 
@@ -451,4 +432,42 @@
     padding: var(--space-md);
     border-top: 1px solid var(--color-border);
     font-size: 13px;
+}
+/* Coluna dos checkboxes */
+.checkbox-cell {
+  text-align: center;
+  width: 40px;
+}
+
+/* Checkbox padrão da tabela */
+.row-checkbox,
+#select-all {
+  appearance: none;          /* remove estilo padrão do navegador */
+  -webkit-appearance: none;  /* compatibilidade Safari */
+  width: 18px;
+  height: 18px;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  background-color: #1d232c; /* fundo igual ao tema */
+  cursor: pointer;
+  position: relative;
+}
+
+/* Estado marcado */
+.row-checkbox:checked,
+#select-all:checked {
+  background-color: #00c3ff;
+  border-color: #00c3ff;
+}
+
+/* Ícone de check */
+.row-checkbox:checked::after,
+#select-all:checked::after {
+  content: "✔";
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

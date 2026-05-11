@@ -1,6 +1,5 @@
 const tableBody = document.querySelector(".data-table tbody");
 const addGameBtn = document.querySelector(".btn-add-game");
-const searchInput = document.querySelector(".input-search");
 
 let editingRow = null;
 let currentId = localStorage.length === 0 ? 1 : localStorage.length + 1;
@@ -47,6 +46,9 @@ function addRow(data) {
   tr.setAttribute("scope", "row");
 
   tr.innerHTML = `
+    <td class="checkbox-cell">
+      <input type="checkbox" class="row-checkbox">
+    </td>
     <td data-visibility="true">${data.id}</td>
     <td data-visibility="false">${data.nome}</td>
     <td data-visibility="true">${data.categoria}</td>
@@ -233,16 +235,6 @@ tableBody.addEventListener("click", (e) => {
   }
 });
 
-// BUSCA
-searchInput.addEventListener("keyup", () => {
-  const filter = searchInput.value.toLowerCase();
-  const rows = tableBody.querySelectorAll("tr");
-
-  rows.forEach(row => {
-    const text = row.innerText.toLowerCase();
-    row.style.display = text.includes(filter) ? "" : "none";
-  });
-});
 
 // TOOLTIP
 const tooltip = document.getElementById("tooltip");
