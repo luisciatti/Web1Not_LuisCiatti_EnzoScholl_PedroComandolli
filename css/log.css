@@ -132,8 +132,15 @@
     text-decoration: none;
 }
 
-.card-footer a:hover {
+.card-footer a {
+    font-size: 0.75rem;
     color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card-footer a:hover {
+    color: #1e90ff; /* azul */
 }
 
 /* =====================
@@ -193,4 +200,26 @@
         align-items: center;
         gap: 10px;
     }
+}
+
+.forgot-password {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #1e90ff;
+}
+
+.btn-primary {
+    transition: background-color 0.3s ease, filter 0.3s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1); /* levemente mais claro */
 }

@@ -46,3 +46,4 @@ document.addEventListener("DOMContentLoaded", () => {
 login.addEventListener("click", (e) => {
     validarCampo(e);
 }); 
+
