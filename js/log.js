@@ -18,24 +18,47 @@ const validarCampo = (e) => {
             localStorage.clear();
         }
     } else {
-        usuario.style.borderColor = "#ff0000"
-        senha.style.borderColor = "#ff0000" 
-        login.disabled = true;
+         usuario.style.borderColor = "#ff0000";
+         senha.style.borderColor = "#ff0000"; 
+         login.disabled = true;
 
-        senha.insertAdjacentHTML("afterend", `
-            <div id="warning" class="mb-md" style="font-size: 11px; color: #ff0000">
-                Usuário e/ou senha incorretos
-            </div>
-            `);
+         // Mensagem de erro
+         senha.insertAdjacentHTML("afterend", `
+             <div id="warning" class="mb-md" style="font-size: 11px; color: #ff0000">
+                 Usuário e/ou senha incorretos
+             </div>
+         `);
 
-        setTimeout(() => {
-            usuario.style.borderColor = "white"
-            senha.style.borderColor = "white"
-            login.disabled = false;
-            document.getElementById("warning").remove();
-        }, 3e3);
+         // Ícone dentro do campo de usuário
+        if (!document.getElementById("error-icon")) {
+        usuario.parentElement.insertAdjacentHTML("beforeend", `
+            <img src="img/icons/error.png" alt="Erro" class="error-icon-usuario" id="error-icon-usuario">
+        `);}
+    
+         // Ícone dentro do campo de senha
+         if (!document.getElementById("error-icon")) {
+             senha.parentElement.insertAdjacentHTML("beforeend", `
+                 <img src="img/icons/error.png" alt="Erro" class="error-icon" id="error-icon">
+             `);
+         }
+         
+     
+         setTimeout(() => {
+             usuario.style.borderColor = "white";
+             senha.style.borderColor = "white";
+             login.disabled = false;
 
-    }
+             const warning = document.getElementById("warning");
+             if (warning) warning.remove();
+
+             const iconUsuario = document.getElementById("error-icon-usuario");
+             if (iconUsuario) iconUsuario.remove();
+                
+             const icon = document.getElementById("error-icon");
+             if (icon) icon.remove();
+         }, 3000);
+}
+
 };
 
 document.addEventListener("DOMContentLoaded", () => {
