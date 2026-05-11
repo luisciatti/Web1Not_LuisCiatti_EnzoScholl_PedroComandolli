@@ -471,3 +471,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.form-field {
+  position: relative;
+}
+
+.form-field input {
+  padding-right: 28px; /* espaço para o ícone */
+}
+
+.error-icon {
+  top: 40%;
+    position: absolute;
+  right: 8px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}

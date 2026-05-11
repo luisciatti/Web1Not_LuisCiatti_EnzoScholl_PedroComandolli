@@ -144,17 +144,30 @@ function attachFormEvents(prefillData) {
     const nomeInput = document.getElementById("nome");
 
 if (nomeInput.value.trim().length < 2) {
+
     nomeInput.style.borderColor = "#ff0000";
+    document.querySelector(".btn-save").disabled=true;
+
 
     nomeInput.insertAdjacentHTML("afterend", `
         <div id="warning" style="font-size: 11px; color: #ff0000">
             O nome deve ter no mínimo 2 caracteres
         </div>
     `);
+    // Ícone dentro do campo de nome
+    if (!document.getElementById("error-icon-nome")) {
+        nomeInput.parentElement.insertAdjacentHTML("beforeend", `
+            <img src="img/icons/error.png" alt="Erro" class="error-icon" id="error-icon-nome">
+        `);
+    }
 
     setTimeout(() => {
         nomeInput.style.borderColor = "white";
         document.getElementById("warning")?.remove();
+        document.querySelector(".btn-save").disabled=false;
+        const iconNome = document.getElementById("error-icon-nome");
+        if (iconNome) iconNome.remove();
+        
     }, 3000);
 
     return;
