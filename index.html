@@ -52,14 +52,14 @@
                     <table class="data-table" aria-describedby="descricao-tabela">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Categoria</th>
-                                <th scope="col">Preço</th>
-                                <th scope="col">Estúdio</th>
-                                <th scope="col">Plataforma/s</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Ações</th>
+                                <th role="columnheader" scope="col" data-visibility="true">ID</th>
+                                <th role="columnheader" scope="col" data-visibility="false">Nome</th>
+                                <th role="columnheader" scope="col" data-visibility="true">Categoria</th>
+                                <th role="columnheader" scope="col" data-visibility="false">Preço</th>
+                                <th role="columnheader" scope="col" data-visibility="false">Estúdio</th>
+                                <th role="columnheader" scope="col" data-visibility="true">Plataforma/s</th>
+                                <th role="columnheader" scope="col" data-visibility="false">Status</th>
+                                <th role="columnheader" scope="col" data-visibility="false">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,6 +69,11 @@
 
             </div>
         </div>
+
+        <!-- Tooltip -->
+        <span id="tooltip" class="">
+            <p>sasaas</p>
+        </span>
     </main>
 
     <!-- Footer -->
