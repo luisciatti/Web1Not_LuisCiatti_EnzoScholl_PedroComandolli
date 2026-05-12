@@ -47,6 +47,9 @@ function addRow(data) {
   tr.setAttribute("scope", "row");
 
   tr.innerHTML = `
+   <td class="checkbox-cell">
+      <input type="checkbox" class="row-checkbox">
+    </td>
     <td data-visibility="true">${data.id}</td>
     <td data-visibility="false">${data.nome}</td>
     <td data-visibility="true">${data.categoria}</td>
@@ -149,10 +152,18 @@ if (nomeInput.value.trim().length < 2) {
             O nome deve ter no mínimo 2 caracteres
         </div>
     `);
+    // Ícone dentro do campo de senha
+         if (!document.getElementById("error-icon-nome")) {
+             nomeInput.parentElement.insertAdjacentHTML("beforeend", `
+                 <img src="img/icons/error.png" alt="Erro" class="error-icon-nome" id="error-icon">
+             `);
+         }
 
     setTimeout(() => {
         nomeInput.style.borderColor = "white";
         document.getElementById("warning")?.remove();
+        const iconNome = document.getElementById("error-icon-nome");
+             if (iconNome) iconNome.remove();
     }, 3000);
 
     return;
