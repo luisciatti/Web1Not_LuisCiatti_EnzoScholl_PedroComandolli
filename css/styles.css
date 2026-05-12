@@ -262,6 +262,36 @@
     background: var(--color-bg);
 }
 
+.pagination-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#pagination {
+    margin-left: 5px;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--space-xs);
+    border: 2px solid var(--color-bg);
+    background-color: transparent;
+    color: var(--color-text);
+}
+
+#pagination option {
+    border: none;
+    background-color: var(--color-secondary);
+}
+
+#pagination:hover,
+#pagination:focus {
+    border: 3px solid var(--color-primary);
+}
+    
 /* =================================================
    STATUS BADGES
 ================================================= */
