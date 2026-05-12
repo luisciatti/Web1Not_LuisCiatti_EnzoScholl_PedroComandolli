@@ -1,5 +1,6 @@
 const tableBody = document.querySelector(".data-table tbody");
 const addGameBtn = document.querySelector(".btn-add-game");
+const searchInput = document.querySelector(".input-search");
 
 let editingRow = null;
 let currentId = localStorage.length === 0 ? 1 : localStorage.length + 1;
@@ -42,26 +43,15 @@ function fecharForm() {
 // ADICIONAR LINHA na tabela do index
 function addRow(data) {
   const tr = document.createElement("tr");
-
-  tr.setAttribute("scope", "row");
-
   tr.innerHTML = `
-    <td class="checkbox-cell">
-      <input type="checkbox" class="row-checkbox">
-    </td>
-    <td data-visibility="true">${data.id}</td>
-    <td data-visibility="false">${data.nome}</td>
-    <td data-visibility="true">${data.categoria}</td>
-    <td data-visibility="false">R$ ${data.preco}</td>
-    <td data-visibility="false">${data.estudio}</td>
-    <td data-visibility="true">${data.plataforma}</td>
-    <td data-visibility="false">
-      <div class="status-grid">
-        <img src="../img/icons/${data.status === "Disponível" ? "checkmarked" : "cancel"}.png" />
-        ${data.status}
-      </div>
-    </td>
-    <td data-visibility="false">
+    <td>${data.id}</td>
+    <td>${data.nome}</td>
+    <td>${data.categoria}</td>
+    <td>${data.preco}</td>
+    <td>${data.estudio}</td>
+    <td>${data.plataforma}</td>
+    <td>${data.status}</td>
+    <td>
       <div class="action-buttons">
         <button class="action-btn edit"><i class="fas fa-edit"></i></button>
         <button class="action-btn delete"><i class="fas fa-trash"></i></button>
@@ -101,7 +91,6 @@ if (localStorage.length > 0)
 // EVENTOS DO FORM
 function attachFormEvents(prefillData) {
   const form = document.getElementById("item-form");
-  const closeBtn = document.querySelector(".btn-close");
 
   // Preencher dados (edição)
   if (prefillData) {
@@ -144,30 +133,17 @@ function attachFormEvents(prefillData) {
     const nomeInput = document.getElementById("nome");
 
 if (nomeInput.value.trim().length < 2) {
-
     nomeInput.style.borderColor = "#ff0000";
-    document.querySelector(".btn-save").disabled=true;
-
 
     nomeInput.insertAdjacentHTML("afterend", `
         <div id="warning" style="font-size: 11px; color: #ff0000">
             O nome deve ter no mínimo 2 caracteres
         </div>
     `);
-    // Ícone dentro do campo de nome
-    if (!document.getElementById("error-icon-nome")) {
-        nomeInput.parentElement.insertAdjacentHTML("beforeend", `
-            <img src="img/icons/error.png" alt="Erro" class="error-icon" id="error-icon-nome">
-        `);
-    }
 
     setTimeout(() => {
         nomeInput.style.borderColor = "white";
         document.getElementById("warning")?.remove();
-        document.querySelector(".btn-save").disabled=false;
-        const iconNome = document.getElementById("error-icon-nome");
-        if (iconNome) iconNome.remove();
-        
     }, 3000);
 
     return;
@@ -177,19 +153,10 @@ if (nomeInput.value.trim().length < 2) {
       const cells = editingRow.querySelectorAll("td");
       cells[1].innerText = data.nome;
       cells[2].innerText = data.categoria;
-      cells[3].innerText = "R$ " + data.preco;
+      cells[3].innerText = data.preco;
       cells[4].innerText = data.estudio;
       cells[5].innerText = data.plataforma;
-      cells[6].innerText = "";
-
-      const sixthCellHTML = `
-      <div class="status-grid">
-        <img src="../img/icons/${data.status === "Disponível" ? "checkmarked" : "cancel"}.png" />
-        ${data.status}
-      </div>
-      `
-
-      cells[6].insertAdjacentHTML("afterbegin", sixthCellHTML);
+      cells[6].innerText = data.status;
 
       localData[0] = cells[0].innerText;
 
@@ -206,10 +173,7 @@ if (nomeInput.value.trim().length < 2) {
     fecharForm(); // fecha tudo corretamente
   });
 
-  // Botão cancelar
-  closeBtn.addEventListener("click", () => {
-    fecharForm(); // fecha tudo corretamente
-  });
+  
 }
 
 // BOTÃO ADICIONAR
@@ -225,7 +189,7 @@ tableBody.addEventListener("click", (e) => {
       id: cells[0].innerText,
       nome: cells[1].innerText,
       categoria: cells[2].innerText,
-      preco: cells[3].innerText.split("R$")[1].trim(),
+      preco: cells[3].innerText,
       estudio: cells[4].innerText,
       plataforma: cells[5].innerText,
       status: cells[6].innerText
@@ -242,37 +206,22 @@ tableBody.addEventListener("click", (e) => {
 
     e.target.closest("tr").remove();
 
-    if (localStorage.length == 0) {
+    if(localStorage.length==0){
       currentId = 1;
     }
   }
 });
 
+// BUSCA
+searchInput.addEventListener("keyup", () => {
+  const filter = searchInput.value.toLowerCase();
+  const rows = tableBody.querySelectorAll("tr");
 
-// TOOLTIP
-const tooltip = document.getElementById("tooltip");
-const tooltipText = tooltip.querySelector("p");
-
-function toggleTooltip(e) {
-  const targetedTd = e.target.closest("td");
-
-  if (targetedTd && targetedTd.scrollWidth > targetedTd.clientWidth) {
-    setTimeout(() => {
-      tooltip.classList.add("active");
-    }, 750);
-
-    tooltip.style.top = `${e.clientY}px`;
-    tooltip.style.left = `${e.clientX}px`;
-
-    tooltipText.innerText = targetedTd.innerText;
-  } else {
-    tooltip.classList.remove("active");
-  }
-}
-
-document.addEventListener("mouseover", (e) => {
-  toggleTooltip(e);
-})
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
 
 // HEADER / FOOTER
 let logoImg = null;
@@ -304,17 +253,11 @@ function reloadPage() {
 }
 
 function insertUsername() {
-  if (username) {
-    if (sessionStorage.getItem("usuario") != null) {
-      username.textContent = sessionStorage.getItem("usuario");
-    } else {
-      username.textContent = "Visitante";
-    }
-  }
+  if (username) username.textContent = sessionStorage.getItem("usuario");
 }
 
 window.addEventListener("beforeunload", function () {
-  sessionStorage.removeItem("usuario");
+  sessionStorage.setItem("usuario", "Visitante");
 });
 
 

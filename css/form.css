@@ -62,20 +62,39 @@
 
 /* Botões estilo Material */
 .form-actions {
-  margin-top: 20px;
+  margin-top: 24px;
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
 }
+
+.form-actions .btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  border-radius: 999px;
+
+  padding: 12px 20px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
 /* Botão salvar */
 .btn-save {
-  background: linear-gradient(135deg, #00c3ff, #0066ff);
+  background: #6f5aa8;
   color: #fff;
 }
 
 .btn-save:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 195, 255, 0.4);
+  filter: brightness(1.06);
 }
 
 /* Botão cancelar */
@@ -93,13 +112,12 @@
 
 /* Botão Limpar */
 .btn-clean {
-  background: white;
-  color: #000;
+  background: #dcd7f2;
+  color: #4e4b66;
 }
 
 .btn-clean:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px #fff;
+  filter: brightness(1.03);
 }
 
 /* Overlay */
