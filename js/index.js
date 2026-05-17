@@ -226,6 +226,21 @@ searchInput.addEventListener("keyup", () => {
   });
 });
 
+// SORT
+const sort = document.getElementById("sort");
+
+function sortTable() {
+  if (sort.classList.contains("up")) {
+    sort.classList.remove("up");
+    sort.classList.add("down");
+  } else {
+    sort.classList.remove("down");
+    sort.classList.add("up");
+  }
+}
+
+sort.addEventListener("click", sortTable);
+
 // TOOLTIP
 const tooltip = document.getElementById("tooltip");
 const tooltipText = tooltip.querySelector("p");

@@ -221,12 +221,18 @@
 }
 
 .data-table th {
-    padding: var(--space-lg) var(--space-md);
+    padding: 12px var(--space-md);
     text-align: left;
     font-weight: 500;
     color: var(--color-text);
     border-bottom: 2px solid var(--color-bg);
     white-space: nowrap;
+}
+
+.sort-wrapper {
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .data-table td {
@@ -267,10 +273,12 @@
     justify-content: end;
     align-items: center;
     gap: 20px;
+    width: 100%;
     padding: var(--space-sm) var(--space-md);
     background-color: var(--color-secondary);
     font-size: 14px;
     font-weight: 500;
+    overflow-x: auto;
 }
 
 #pagination {
@@ -280,18 +288,20 @@
     border: 2px solid var(--color-bg);
     background-color: transparent;
     color: var(--color-text);
+    transition: ease-in 0.2s border;
 }
 
 #pagination option {
+    padding: 0;
     border: none;
     background-color: var(--color-secondary);
 }
 
 #pagination:hover,
 #pagination:focus {
-    border: 3px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
 }
-    
+
 /* =================================================
    STATUS BADGES
 ================================================= */
@@ -341,6 +351,24 @@
 
 .action-btn.delete {
     color: #dc3545;
+}
+
+.action-btn.sort img {
+    padding: 5px;
+    border-radius: 100%;
+    transition: ease-in 0.2s background;
+}
+
+.action-btn.sort.up img {
+    content: url(../img/icons/up-arrow.png);
+}
+
+.action-btn.sort.down img {
+    content: url(../img/icons/down-arrow.png);
+}
+
+.action-btn.sort img:hover {
+    background: var(--color-bg);
 }
 
 .action-btn:hover {
@@ -394,12 +422,13 @@
         font-size: 12px;
     }
 
-    .data-table th {
-        padding: var(--space-lg);
-    }
-
     .data-table td {
         max-width: 120px;
+    }
+
+    .pagination-wrapper {
+        font-size: 12px;
+        width: max-content;
     }
 }
 
